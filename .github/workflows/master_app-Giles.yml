@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://app-giles.azurewebsites.net//
-        username: ${{ secrets.AzureAppService_ContainerUsername_c462f1a5747f4d2a992294ff1955fb47 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_d78093e9b081453dbb8400632b1fdb56 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_8f716d048b39417f97d844ce94e60eb5 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_e8ec1dbc40184113a60f311291ea0ce7 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: app-giles.azurewebsites.net//${{ secrets.AzureAppService_ContainerUsername_c462f1a5747f4d2a992294ff1955fb47 }}/appsvc/staticsite:${{ github.sha }}
+        tags: app-giles.azurewebsites.net//${{ secrets.AzureAppService_ContainerUsername_8f716d048b39417f97d844ce94e60eb5 }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'app-Giles'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_99d8fc45d62547f49c35b88f1c9be037 }}
-        images: 'app-giles.azurewebsites.net//${{ secrets.AzureAppService_ContainerUsername_c462f1a5747f4d2a992294ff1955fb47 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6d6346a667c147188815b8f8c4c6bac7 }}
+        images: 'app-giles.azurewebsites.net//${{ secrets.AzureAppService_ContainerUsername_8f716d048b39417f97d844ce94e60eb5 }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}'
